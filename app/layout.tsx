@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { SiteHeader } from "@/components/layouts/site-header";
+import { SiteFooter } from "@/components/layouts/site-footer";
 
 export const metadata: Metadata = {
   title: "One4cus",
-  description: "One4cus - Your Service Marketplace",
+  description: "Find services and deals near you",
 };
 
 export default function RootLayout({
@@ -23,11 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en">
+      <body className="min-h-screen bg-white text-slate-900 antialiased">
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
